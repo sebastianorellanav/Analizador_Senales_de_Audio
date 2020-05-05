@@ -9,14 +9,17 @@
 #######---------------------------------------------------------------------------------------------#######
 #######                                       descripcion                                           #######
 ###########################################################################################################
-#0. Librerias utilizadas
 
+###########################################################################################################
+#######									   Librerias                                                #######
 import scipy.io.wavfile as waves
 import matplotlib.pyplot as plt
 import numpy as np
 
 
-#1.Lea una señal de audio y determine a qué corresponde cada uno de los parámetros retornados.
+
+###########################################################################################################
+#######									   Funciones                                                #######
 
 #Entrada: string con nombre de archivo
 #Salida: muestreo: frecuencia de datos por segundo
@@ -24,14 +27,14 @@ import numpy as np
 #Descripción: leer archivo con señal de sonido
 def leerSenal(nombre):
    
-    muestreo, sonido = waves.read(nombre)
-    return muestreo, sonido
+    frecuencia, sonido = waves.read(nombre)
+    return frecuencia, sonido
 
-#Entrada: muestreo y sonido
+#Entrada: frecuencia del audio y datos del sonido
 #Salida: gráfico que representa audio leido
 #Descripción: graficar señal de audio obtenida
-def graficar(muestreo,sonido):
-    tiempo = np.arange(len(sonido))/float(muestreo)
+def graficarSonidoTiempo(freq,sonido):
+    tiempo = np.arange(len(sonido))/float(freq)
     plt.figure(figsize=(30, 4))
     plt.fill_between(tiempo, sonido,color="green")
     plt.xlim(tiempo[0], tiempo[-1])
@@ -39,17 +42,41 @@ def graficar(muestreo,sonido):
     plt.ylabel('Amplitud')
     plt.show()
 
+#Entrada: frecuencia del audio, datos del sonido
+#Salida: tranformada de fourier, array con frecuencias
+#Descripcion:
+def calcularTransformada(freq, datos):
+	y = fourier.fft(datos)
+	y =fourier.fftshift(y)
+	y = np.abs(y)
+	freqs = np.fft.fftfreq(len(y),1/freq)
+	freqs = fourier.fftshift(freqs)
 
-# Llamado a funciones en pregunta 1
-muestreo, sonido = leerSenal('handel.wav')
-graficar(muestreo,sonido)
+	return y, freqs
 
+def graficarTransformadaFrecuencia(freqs, transf):
+	plt.figure(figsize=(30, 4))
+	plt.fill_between(freqs,transf)
+	plt.xlim(freqs[0], freqs[-1])
+	plt.xlabel('Frecuencia')
+	plt.ylabel('Amplitud')
+	plt.show()
+############################################################################################################
+#######                                          main                                                #######
+
+#1.Lea una señal de audio y determine a qué corresponde cada uno de los parámetros retornados.
+freq, sonido = leerSenal('handel.wav')  #primer parametro = frecuencia del audio
+											  #segundo parametro = datos del sonido
 
 #2.Grafique la función de audio en el tiempo.
-
+graficarSonidoTiempo(freq,sonido)
 
 #3.Calcule la transformada de Fourier de la señal de audio:
+freqs, transf = calcularTransformada(freq, sonido)
+
 #a.Grafique la señal en el dominio de la frecuencia.
+graficarTransformadaFrecuencia(freqs, transf)
+
 #b.Al resultado del punto 3, calcule la transformada de Fourier inversa.
 #c.Compare con la señal leída en el punto 1.
 
