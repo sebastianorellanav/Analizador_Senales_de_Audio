@@ -9,8 +9,40 @@
 #######---------------------------------------------------------------------------------------------#######
 #######                                       descripcion                                           #######
 ###########################################################################################################
+#0. Librerias utilizadas
+
+import scipy.io.wavfile as waves
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 #1.Lea una señal de audio y determine a qué corresponde cada uno de los parámetros retornados.
+
+#Entrada: string con nombre de archivo
+#Salida: muestreo: frecuencia de datos por segundo
+#        sonido: contiene datos del sonido
+#Descripción: leer archivo con señal de sonido
+def leerSenal(nombre):
+   
+    muestreo, sonido = waves.read(nombre)
+    return muestreo, sonido
+
+#Entrada: muestreo y sonido
+#Salida: gráfico que representa audio leido
+#Descripción: graficar señal de audio obtenida
+def graficar(muestreo,sonido):
+    tiempo = np.arange(len(sonido))/float(muestreo)
+    plt.figure(figsize=(30, 4))
+    plt.fill_between(tiempo, sonido,color="green")
+    plt.xlim(tiempo[0], tiempo[-1])
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Amplitud')
+    plt.show()
+
+
+# Llamado a funciones en pregunta 1
+muestreo, sonido = leerSenal('handel.wav')
+graficar(muestreo,sonido)
 
 
 #2.Grafique la función de audio en el tiempo.
