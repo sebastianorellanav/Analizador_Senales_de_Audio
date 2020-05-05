@@ -5,7 +5,7 @@
 #######                                   Sebastian Orellana                                        #######
 #######                                      Franco Tapia                                           #######
 #######                                                                                             #######
-#######                                        version 1                                            #######
+#######                                        version 2                                            #######
 #######---------------------------------------------------------------------------------------------#######
 #######                                       descripcion                                           #######
 ###########################################################################################################
@@ -14,6 +14,7 @@
 #######									   Librerias                                                #######
 import scipy.io.wavfile as waves
 import matplotlib.pyplot as plt
+import scipy.fftpack as fourier
 import numpy as np
 
 
@@ -40,7 +41,6 @@ def graficarSonidoTiempo(freq,sonido):
     plt.xlim(tiempo[0], tiempo[-1])
     plt.xlabel('Tiempo (s)')
     plt.ylabel('Amplitud')
-    plt.show()
 
 #Entrada: frecuencia del audio, datos del sonido
 #Salida: tranformada de fourier, array con frecuencias
@@ -52,15 +52,24 @@ def calcularTransformada(freq, datos):
 	freqs = np.fft.fftfreq(len(y),1/freq)
 	freqs = fourier.fftshift(freqs)
 
-	return y, freqs
+	return freqs, y
 
+#Entrada:array de frecuencias (eje X), transformada de fourier (eje y)
+#Salida: no hay return, La función crea un grafico que sera mostrado mas adelante
+#DEscripcion: La función grafica la transformada de fourier en funcion de la frecuencia
 def graficarTransformadaFrecuencia(freqs, transf):
 	plt.figure(figsize=(30, 4))
 	plt.fill_between(freqs,transf)
-	plt.xlim(freqs[0], freqs[-1])
 	plt.xlabel('Frecuencia')
 	plt.ylabel('Amplitud')
+
+#Entrada: -
+#Salida: -
+#Funcion que muestra los graficos creados
+def mostrarGraficos():
 	plt.show()
+
+
 ############################################################################################################
 #######                                          main                                                #######
 
@@ -76,6 +85,13 @@ freqs, transf = calcularTransformada(freq, sonido)
 
 #a.Grafique la señal en el dominio de la frecuencia.
 graficarTransformadaFrecuencia(freqs, transf)
+
+mostrarGraficos()
+
+
+
+
+
 
 #b.Al resultado del punto 3, calcule la transformada de Fourier inversa.
 #c.Compare con la señal leída en el punto 1.
