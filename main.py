@@ -40,9 +40,13 @@ pregunta3.graficarTransformadaFrecuencia(freqs, transf)
 tiempos, inversa = pregunta3.calcularTransformadaInversa(freq, sonido)
 pregunta3.graficarTransformadaInversa(tiempos, inversa)
 
+#c.Compare con la señal leída en el punto 1
+errores, rmse = pregunta3.calcularError(sonido, inversa)
+pregunta3.graficarError(tiempos, errores, rmse)
+print(rmse)
+
 #4. graficar Espectrograma
 pregunta4.graficarEspectrograma(sonido,freq)
 
 #Mostrar Graficos
 otros.mostrarGraficos()
-

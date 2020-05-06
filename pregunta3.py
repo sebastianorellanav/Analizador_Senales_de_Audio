@@ -36,6 +36,7 @@ def calcularTransformadaInversa(freq,datos):
 
 #Entrada: arreglos de tiempos (eje x), transformada de fourier (eje y)
 #Salida: imagen del gráfico amplitud vs tiempo obtenido de la serie de fourier inversa
+#Descripcion: 
 def graficarTransformadaInversa(tiempos,inversa):
     plt.figure(figsize=(30, 4))
     plt.fill_between(tiempos, inversa.real,inversa.imag,color="green")
@@ -44,3 +45,30 @@ def graficarTransformadaInversa(tiempos,inversa):
     plt.xlabel('tiempo (s)')
     plt.ylabel('Amplitud')
     plt.savefig("transformadaFourierInversa.png")
+
+#Entrada: datos del sonido, transformada inversa del sonido
+#Salida: array de errores simples, error cuadratico medio
+#Descripción: la funcion calcula el error absoluto entre cada uno de los
+#             valores de las funciones. Además calcula el error cuadratico medio
+def calcularError(sonido,inversa):
+    errores = []
+    for i in range(len(sonido)):
+        dif = sonido[i] - inversa[i]
+        dif = abs(dif)
+        errores.append(dif)
+
+    mse = ((sonido - inversa)**2).mean(axis=None)
+    rmse = mse**(1/2)
+    
+    return errores, rmse
+
+#Entrada: arreglos de tiempos (eje x), arreglo de errores (eje y), error cuadratico medio
+#Salida: gráfico error absoluto vs tiempo 
+#Descripcion: 
+def graficarError(tiempos, errores,rmse):
+    plt.figure(figsize=(30,4))
+    plt.fill_between(tiempos, errores)
+    plt.title('Error Sonido Original y Transformada Iversa')
+    plt.xlabel('Tiempo (s)')
+    plt.ylabel('Error Absoluto')
+    
