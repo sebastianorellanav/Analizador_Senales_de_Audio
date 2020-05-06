@@ -14,10 +14,12 @@
 #######									   Librerias                                                #######
 import matplotlib.pyplot as plt
 import scipy.fftpack as fourier
+from scipy import signal
 import numpy as np
 import pregunta1 as pregunta1
 import pregunta2 as pregunta2
 import pregunta3 as pregunta3
+import pregunta4 as pregunta4
 import otros as otros
 
 
@@ -38,6 +40,9 @@ pregunta3.graficarTransformadaFrecuencia(freqs, transf)
 tiempos, inversa = pregunta3.calcularTransformadaInversa(freq, sonido)
 pregunta3.graficarTransformadaInversa(tiempos, inversa)
 
-#Mostrar todos los graficos
+#4. graficar Espectrograma
+pregunta4.graficarEspectrograma(sonido,freq)
+
+#Mostrar Graficos
 otros.mostrarGraficos()
 
