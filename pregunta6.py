@@ -18,3 +18,4 @@ def lowPassFilter(data, fs, nfilt=80, fw_base=4000, axis=0):
 
     return filtered_sound
 
+

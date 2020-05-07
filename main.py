@@ -36,7 +36,8 @@ pregunta2.graficarSonidoTiempo(freq,sonido)
 freqs, transf = pregunta3.calcularTransformada(freq, sonido)
 
 #3.a.Grafique la señal en el dominio de la frecuencia.
-pregunta3.graficarTransformadaFrecuencia(freqs, transf)
+nombreGrafico = 'Transformada de Fourier: Amplitud vs frecuencia(Hz)'
+pregunta3.graficarTransformadaFrecuencia(freqs, transf,nombreGrafico)
 
 #b.Al resultado del punto 3, calcule la transformada de Fourier inversa.
 tiempos, inversa = pregunta3.calcularTransformadaInversa(freq, sonido)
@@ -48,7 +49,8 @@ pregunta3.graficarError(tiempos, errores, rmse)
 print(rmse)
 
 #4. graficar Espectrograma
-pregunta4.graficarEspectrograma(sonido,freq)
+nombreGrafico = 'Espectograma de señal de audio'
+pregunta4.graficarEspectrograma(sonido,freq,nombreGrafico)
 
 #6.a. Filtre el ruido de la señal de audio con un Filtro FIR
 taps = 100			#numero de pulsos
@@ -67,5 +69,16 @@ cutoff = 2000		#frecuencia de corte
 filtrado_3 = pregunta6.lowPassFilter(sonido, freq, taps, cutoff, 0) #filtrar soonido
 waves.write('filtrado_3.wav', freq, filtrado_3.astype(np.int16))  #guardar audio filtrado_3
 
-#Mostrar Graficos
+#c. Obtenga la transformada de Fourier y el espectograma de la señal filtrada
+freqs_filtrado, transf_filtrado = pregunta3.calcularTransformada(freq, filtrado_1)
+#Transformada de Fourier señal filtrada
+nombreGrafico = 'Transformada de Fourier señal filtrada: Amplitud vs frecuencia(Hz)'
+pregunta3.graficarTransformadaFrecuencia(freqs, transf_filtrado,nombreGrafico)
+#Espectograma filtrado
+nombreGrafico = 'Espectograma de señal de audio filtrado'
+pregunta4.graficarEspectrograma(filtrado_1,freq,nombreGrafico)
+
+
+
+
 otros.mostrarGraficos()

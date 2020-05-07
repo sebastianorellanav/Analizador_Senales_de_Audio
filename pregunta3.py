@@ -17,13 +17,13 @@ def calcularTransformada(freq, datos):
 #Entrada:array de frecuencias (eje X), transformada de fourier (eje y)
 #Salida: no hay return, La función crea un grafico que sera mostrado mas adelante
 #DEscripcion: La función grafica la transformada de fourier en funcion de la frecuencia
-def graficarTransformadaFrecuencia(freqs, transf):
+def graficarTransformadaFrecuencia(freqs, transf,nombreGrafico):
     plt.figure(figsize=(30, 4))
     plt.fill_between(freqs,transf)
-    plt.title('Transformada de Fourier: Amplitud vs frecuencia(Hz)')
+    plt.title(nombreGrafico)
     plt.xlabel('Frecuencia (Hz)')
     plt.ylabel('Amplitud')
-    plt.savefig("transformadaFourier.png")
+    plt.savefig(nombreGrafico + ".png")
 
 #Entrada: frecuencia de audio,datos del sonido
 #Salida: transformada de fourier inversa, array de tiempos
