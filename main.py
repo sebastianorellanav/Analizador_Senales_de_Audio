@@ -30,7 +30,7 @@ freq, sonido = pregunta1.leerSenal('handel.wav')  #primer parametro = frecuencia
 									    #segundo parametro = datos del sonido
 
 #2 Grafique la función de audio en el tiempo.
-pregunta2.graficarSonidoTiempo(freq,sonido)
+pregunta2.graficarSonidoTiempo(freq,sonido,"Señal de Audio Filtrada: Amplitud vs Tiempo (s)")
 
 #3.Calcule la transformada de Fourier de la señal de audio:
 freqs, transf = pregunta3.calcularTransformada(freq, sonido)
@@ -57,6 +57,7 @@ taps = 100			#numero de pulsos
 cutoff = 1000		#frecuencia de corte
 filtrado_1 = pregunta6.lowPassFilter(sonido, freq, taps, cutoff, 0) #filtrar soonido
 waves.write('filtrado_1.wav', freq, filtrado_1.astype(np.int16))  #guardar audio filtrado_1
+pregunta2.graficarSonidoTiempo(freq,filtrado_1,"Señal de Audio Filtrada: Amplitud vs Tiempo (s)")
 
 #b.Pruebe distintos parámetros al momento de aplicar el filtro.
 taps = 200			#numero de pulsos
@@ -71,9 +72,11 @@ waves.write('filtrado_3.wav', freq, filtrado_3.astype(np.int16))  #guardar audio
 
 #c. Obtenga la transformada de Fourier y el espectograma de la señal filtrada
 freqs_filtrado, transf_filtrado = pregunta3.calcularTransformada(freq, filtrado_1)
+
 #Transformada de Fourier señal filtrada
 nombreGrafico = 'Transformada de Fourier señal filtrada: Amplitud vs frecuencia(Hz)'
 pregunta3.graficarTransformadaFrecuencia(freqs, transf_filtrado,nombreGrafico)
+
 #Espectograma filtrado
 nombreGrafico = 'Espectograma de señal de audio filtrado'
 pregunta4.graficarEspectrograma(filtrado_1,freq,nombreGrafico)
