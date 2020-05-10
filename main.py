@@ -30,7 +30,7 @@ freq, sonido = pregunta1.leerSenal('handel.wav')  #primer parametro = frecuencia
 									    #segundo parametro = datos del sonido
 
 #2 Grafique la función de audio en el tiempo.
-pregunta2.graficarSonidoTiempo(freq,sonido,"Señal de Audio Filtrada: Amplitud vs Tiempo (s)")
+pregunta2.graficarSonidoTiempo(freq,sonido,"Señal de Audio: Amplitud vs Tiempo (s)")
 
 #3.Calcule la transformada de Fourier de la señal de audio:
 freqs, transf = pregunta3.calcularTransformada(freq, sonido)
