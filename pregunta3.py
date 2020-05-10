@@ -18,7 +18,7 @@ def calcularTransformada(freq, datos):
 #Salida: no hay return, La función crea un grafico que sera mostrado mas adelante
 #DEscripcion: La función grafica la transformada de fourier en funcion de la frecuencia
 def graficarTransformadaFrecuencia(freqs, transf,nombreGrafico):
-    plt.figure(figsize=(30, 4))
+    plt.figure(figsize=(10, 4))
     plt.fill_between(freqs,transf)
     plt.title(nombreGrafico)
     plt.xlabel('Frecuencia (Hz)')
@@ -38,8 +38,8 @@ def calcularTransformadaInversa(freq,datos):
 #Salida: imagen del gráfico amplitud vs tiempo obtenido de la serie de fourier inversa
 #Descripcion: 
 def graficarTransformadaInversa(tiempos,inversa):
-    plt.figure(figsize=(30, 4))
-    plt.fill_between(tiempos, inversa.real,inversa.imag,color="green")
+    plt.figure(figsize=(10, 4))
+    plt.fill_between(tiempos, inversa.real,inversa.imag)
     plt.xlim(tiempos[0], tiempos[-1])
     plt.title('Transformada de Fourier inversa: Amplitud vs Tiempo(s)')
     plt.xlabel('tiempo (s)')
@@ -66,9 +66,9 @@ def calcularError(sonido,inversa):
 #Salida: gráfico error absoluto vs tiempo 
 #Descripcion: 
 def graficarError(tiempos, errores,rmse):
-    plt.figure(figsize=(30,4))
+    plt.figure(figsize=(10,4))
     plt.fill_between(tiempos, errores)
     plt.title('Error Sonido Original y Transformada Iversa')
     plt.xlabel('Tiempo (s)')
     plt.ylabel('Error Absoluto')
-    
+    plt.savefig("Error_Original_Inversa.png")

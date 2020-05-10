@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 #Salida: gráfico que representa el espetrograma del audio
 #Descripción: graficar el espectrograma
 def graficarEspectrograma(sonido, freq,nombreGrafico):
-	plt.figure(figsize=(30, 4))
+	plt.figure(figsize=(10, 4))
 	plt.specgram(sonido, NFFT=512, Fs=freq)
 	plt.colorbar()
 	plt.title(nombreGrafico)

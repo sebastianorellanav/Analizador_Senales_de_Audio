@@ -7,8 +7,8 @@ import numpy as np
 #Descripción: graficar señal de audio obtenida
 def graficarSonidoTiempo(freq,sonido):
     tiempo = np.arange(len(sonido))/float(freq)
-    plt.figure(figsize=(30, 4))
-    plt.fill_between(tiempo, sonido,color="green")
+    plt.figure(figsize=(10, 4))
+    plt.fill_between(tiempo, sonido)
     plt.xlim(tiempo[0], tiempo[-1])
     plt.title('Señal de audio: Amplitud vs Tiempo (s)')
     plt.xlabel('Tiempo (s)')
