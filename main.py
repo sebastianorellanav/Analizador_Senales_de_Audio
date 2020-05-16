@@ -53,19 +53,18 @@ nombreGrafico = 'Espectograma de señal de audio'
 pregunta4.graficarEspectrograma(sonido,freq,nombreGrafico)
 
 #6.a. Filtre el ruido de la señal de audio con un Filtro FIR
-taps = 100			#numero de pulsos
+taps = 200			#numero de pulsos
 cutoff = 1700		#frecuencia de corte
 filtrado_1 = pregunta6.lowPassFilter(sonido, freq, taps, cutoff, 0) #filtrar soonido
 waves.write('filtrado_1.wav', freq, filtrado_1.astype(np.int16))  #guardar audio filtrado_1
 pregunta2.graficarSonidoTiempo(freq,filtrado_1,"Señal de Audio Filtrada: Amplitud vs Tiempo (s)")
 
 #b.Pruebe distintos parámetros al momento de aplicar el filtro.
-taps = 200			#numero de pulsos
+
 cutoff = 850		#frecuencia de corte
 filtrado_2 = pregunta6.lowPassFilter(sonido, freq, taps, cutoff, 0) #filtrar soonido
 waves.write('filtrado_2.wav', freq, filtrado_2.astype(np.int16))  #guardar audio filtrado_2
 
-taps = 80			#numero de pulsos
 cutoff = 500		#frecuencia de corte
 filtrado_3 = pregunta6.lowPassFilter(sonido, freq, taps, cutoff, 0) #filtrar soonido
 waves.write('filtrado_3.wav', freq, filtrado_3.astype(np.int16))  #guardar audio filtrado_3
