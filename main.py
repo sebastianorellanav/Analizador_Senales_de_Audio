@@ -46,7 +46,7 @@ pregunta3.graficarTransformadaInversa(tiempos, inversa)
 #c.Compare con la señal leída en el punto 1
 errores, rmse = pregunta3.calcularError(sonido, inversa)
 pregunta3.graficarError(tiempos, errores, rmse)
-print(rmse)
+print(abs(rmse))
 
 #4. graficar Espectrograma
 nombreGrafico = 'Espectograma de señal de audio'
