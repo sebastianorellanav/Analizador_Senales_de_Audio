@@ -2,8 +2,8 @@
 
 ## Estructura del Código
 
-1. El código está dividido por preguntas, separadas en diferentes archivos .py
-Cada uno de los archivos pregunta.py contiene la funciones implementadas y utilizadas para reponder dicha pregunta (enumeración obtenida del enunciado del laboratorio)
+1. El código está dividido por preguntas, separadas en diferentes archivos .py ,
+cada uno de los archivos "pregunta.py" contiene la funciones implementadas y utilizadas para reponder dicha pregunta (enumeración obtenida del enunciado del laboratorio)
 
 2. Desde el main.py se llaman a todos los otros archivos .py 
 
