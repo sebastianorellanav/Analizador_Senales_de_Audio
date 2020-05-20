@@ -4,7 +4,7 @@ import numpy as np
 
 #Entrada: frecuencia del audio, datos del sonido
 #Salida: tranformada de fourier, array con frecuencias
-#Descripcion:
+#Descripcion: calcula la transformada de fourier
 def calcularTransformada(freq, datos):
     y = fourier.fft(datos)
     y =fourier.fftshift(y)
@@ -36,7 +36,7 @@ def calcularTransformadaInversa(freq,datos):
 
 #Entrada: arreglos de tiempos (eje x), transformada de fourier (eje y)
 #Salida: imagen del gráfico amplitud vs tiempo obtenido de la serie de fourier inversa
-#Descripcion: 
+#Descripcion: grafica la transformada inversa
 def graficarTransformadaInversa(tiempos,inversa):
     plt.figure(figsize=(10, 4))
     plt.fill_between(tiempos, inversa.real,inversa.imag)
@@ -64,7 +64,7 @@ def calcularError(sonido,inversa):
 
 #Entrada: arreglos de tiempos (eje x), arreglo de errores (eje y), error cuadratico medio
 #Salida: gráfico error absoluto vs tiempo 
-#Descripcion: 
+#Descripcion: Grafica el error absoluto entre el sonido original y la inversa
 def graficarError(tiempos, errores,rmse):
     plt.figure(figsize=(10,4))
     plt.fill_between(tiempos, errores)

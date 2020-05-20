@@ -80,7 +80,5 @@ pregunta3.graficarTransformadaFrecuencia(freqs, transf_filtrado,nombreGrafico)
 nombreGrafico = 'Espectograma de señal de audio filtrado'
 pregunta4.graficarEspectrograma(filtrado_1,freq,nombreGrafico)
 
-
-
-
+#Mostrar los graficos
 otros.mostrarGraficos()
